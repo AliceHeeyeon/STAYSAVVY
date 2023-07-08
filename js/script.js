@@ -687,7 +687,7 @@ viewNext.addEventListener("click", function () {
 //customize mapbox
 map.on('load', () => {
     //this will add location icon
-    map.loadImage('location-icon.png', function (error, image) {
+    map.loadImage('https://location-icon.vercel.app/img/location-icon.png', function (error, image) {
         if (error) {
             throw error;
         }
@@ -833,7 +833,7 @@ modalMapCloseBtn.addEventListener("click", function () {
 //add location icon which shows chosen place's location in the mapbox of calculate distance
 mapbox.on('load', () => {
     //this will add location icon
-    mapbox.loadImage('location-icon.png', function (error, image) {
+    mapbox.loadImage('https://location-icon.vercel.app/img/location-icon.png', function (error, image) {
         if (error) {
             throw error;
         }
