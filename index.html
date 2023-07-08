@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Aos -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- mapbox -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- datepicker css library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <!-- first slide -->
+            <div class="swiper-slide">
+                <!-- nav -->
+                <nav class="nav-section">
+                    <div class="nav-container">
+                        <h3 class="logo">STAYSAVVY</h3>
+                        <div class="menu-and-darkmodebtn">
+                            <i class="bi bi-list list-icon nav-menu-btn"></i>
+                            <i class="bi bi-moon-fill moon-icon day-to-night-mode-btn"></i>
+                            <i class="bi bi-moon-stars-fill night-to-day-mode-btn"></i>
+                        </div>
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                </nav>
+
+                <div id="hero-and-searchbox">
+                    <h1 id="heading"><span class="yellow">Book </span>Your Best Kiwi <span class="coral">Holidays</span>
+                    </h1>
+                    <p>We find the best accommodation that suits you</p>
+
+                    <div id="search-input-list">
+                        <div class="location-wrapper">
+                            <div id="location" class="search-condition"><i class="bi bi-geo-alt"></i>Location</div>
+                            <div id="location-lists">
+                                <div class="north">North Island</div>
+                                <div class="location-option" data-value="Auckland">Auckland</div>
+                                <div class="location-option" data-value="Coromandel">Coromandel</div>
+                                <div class="location-option" data-value="Tauranga">Tauranga</div>
+                                <div class="location-option" data-value="Rotorua">Rotorua</div>
+                                <div class="location-option" data-value="Taupo">Taupo</div>
+                                <div class="location-option" data-value="Wellington">Wellington</div>
+                                <div class="south">South Island</div>
+                                <div class="location-option" data-value="Hanmer Springs">Hanmer Springs</div>
+                                <div class="location-option" data-value="Christchurch">Christchurch</div>
+                                <div class="location-option" data-value="Tekapo">Tekapo</div>
+                                <div class="location-option" data-value="Twizel">Twizel</div>
+                                <div class="location-option" data-value="Wanaka">Wanaka</div>
+                                <div class="location-option" data-value="Queenstown">Queenstown</div>
+                                <div class="location-option" data-value="Oamaru">Oamaru</div>
+                                <div class="location-option" data-value="Dudedin">Dudedin</div>
+                            </div>
+                        </div>
+
+                        <div id="custom-datepicker">
+                            <div id="check-in" class="search-condition">
+                                <i class="bi bi-calendar-check"></i>Check In
+                            </div>
+                            <div id="check-out" class="search-condition">
+                                <i class="bi bi-calendar-check-fill"></i>Check Out
+                            </div>
+                        </div>
+
+                        <div class="guest-wrapper">
+                            <div id="guests" class="search-condition"><i class="bi bi-people"></i>Guest</div>
+                            <div id="number-lists">
+                                <div class="guest-number" data-value="1">1</div>
+                                <div class="guest-number" data-value="2">2</div>
+                                <div class="guest-number" data-value="3">3</div>
+                                <div class="guest-number" data-value="4">4</div>
+                                <div class="guest-number" data-value="5">5</div>
+                                <div class="guest-number" data-value="6">6</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="search-btn"><i class="bi bi-search"></i>Search</button>
+                </div>
+
+                <!-- Recommend accommodation section -->
+                <div id="recommend-section">
+                    <h2>Recommend accommodation</h2>
+                    <div id="search-and-flter-btn">
+                        <div id="search-box"><i id="search-icon" class="bi bi-search"></i>
+                            <p>Search</p>
+                        </div>
+                        <div class="filter-wrapper">
+                            <button id="filter-call-btn">Filters<i class="bi bi-filter"></i></button>
+                            <div id="filter-list">
+                                <div class="filter-explanation">Choose a type</div>
+                                <div class="filter-option" data-value="Family">Family</div>
+                                <div class="filter-option" data-value="Budget">Budget</div>
+                                <div class="filter-option" data-value="Unique">Unique</div>
+                                <div class="filter-option" data-value="View">View</div>
+                                <div class="filter-option" data-value="Eco">Eco-Friendly</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- String search modal -->
+                <form id="search-modal">
+                    <div id="close-search-modal-btn"><i class="bi bi-x-circle-fill"></i></div>
+                    <h1>Search...</h1>
+                    <div class="modal-contents-wrapper">
+                        <div id="alert-no-string"></div>
+                        <input id="search-input" type="text" value="Search by words">
+                        <div id="string-search-btn"><i class="bi bi-search"></i></div>
+                    </div>
+                </form>
+                <div id="status-update"></div>
+                <i id="left-btn" class="bi bi-chevron-compact-left chevron-box"></i>
+                <i id="right-btn" class="bi bi-chevron-compact-right chevron-box"></i>
+                <div id="recommend-contents-box"></div>
+
+                <!-- Newsletter -->
+                <div id="newsletter-box">
+                    <h2>Subscribe to our
+                        <span>Newsletter</span>
+                        to Get <span>Exclusive offer</span>
+                    </h2>
+                    <p id="email-validation"></p>
+                    <div id="email-and-button">
+                        <input id="email-input" type="text" value="Email address">
+                        <button id="subscribe-btn">Subscribe</button>
+                    </div>
+                </div>
+
+                <!-- footer -->
+                <div class="footer">
+                    <h1>STAYSAVVY</h1>
+                    <ul>
+                        <li>Home</li>
+                        <li>About</li>
+                        <li>Contact</li>
+                        <li>Explore New Zealand</li>
+                    </ul>
+                    <div class="social-media-box">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-twitter"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-youtube"></i>
+                        <i class="bi bi-linkedin"></i>
+                    </div>
+                    <div class="logo-box">
+                        <p>powered by</p>
+                        <img src="img/logo.png" alt="Tourism NewZealand logo">
+                    </div>
+                    <div class="copy-right">
+                        <p>Copyright© 2023 STAYSAVVY. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- second slide -->
+            <div class="swiper-slide">
+                <!-- nav -->
+                <nav class="nav-section">
+                    <div class="nav-container">
+                        <h3 class="logo">STAYSAVVY</h3>
+                        <div class="menu-and-darkmodebtn">
+                            <i class="bi bi-list list-icon nav-menu-btn"></i>
+                            <i class="bi bi-moon-fill moon-icon day-to-night-mode-btn"></i>
+                            <i class="bi bi-moon-stars-fill night-to-day-mode-btn"></i>
+                        </div>
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                </nav>
+
+                <!-- show chosen value here -->
+                <div id="chosen-value">
+                    <div class="section-and-value-wrapper">
+                        <div class="section">Location</div>
+                        <div id="value-location" class="value"></div>
+                    </div>
+                    <div class="section-and-value-wrapper">
+                        <div class="section">Check in</div>
+                        <div id="value-checkin-date" class="value"></div>
+                    </div>
+                    <div class="section-and-value-wrapper">
+                        <div class="section">Check out</div>
+                        <div id="value-checkout-date" class="value"></div>
+                    </div>
+                    <div class="section-and-value-wrapper">
+                        <div class="section">Guests</div>
+                        <div id="value-guests" class="value"></div>
+                    </div>
+                </div>
+                <div id="result-status"></div>
+
+                <!-- filtered results area -->
+                <div class="list-view-wrapper">
+                    <div class="view-btn-and-option">
+                        <button id="list-view-btn">List view<i class="bi bi-chevron-down"></i></button>
+                        <div id="sort-by">
+                            <div class="sorting-option" data-value="pricelow">Price Low to High</div>
+                            <div class="sorting-option" data-value="pricehigh">Price High to Low</div>
+                            <div class="sorting-option" data-value="rating">Rating</div>
+                        </div>
+                    </div>
+                    <div class="list-view-arrow">
+                        <i id="view-previous" class="bi bi-arrow-left-circle-fill"></i>
+                        <i id="view-next" class="bi bi-arrow-right-circle-fill"></i>
+                    </div>
+                </div>
+                <div id="filtered-result-box"></div>
+                <div id="back-to-the-main-btn">
+                    <i class="bi bi-arrow-left"></i>
+                    <span> Back</span>
+                </div>
+                <div id='map'></div>
+
+                <!-- footer -->
+                <div class="footer">
+                    <h1>STAYSAVVY</h1>
+                    <ul>
+                        <li>Home</li>
+                        <li>About</li>
+                        <li>Contact</li>
+                        <li>Explore New Zealand</li>
+                    </ul>
+                    <div class="social-media-box">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-twitter"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-youtube"></i>
+                        <i class="bi bi-linkedin"></i>
+                    </div>
+                    <div class="logo-box">
+                        <p>powered by</p>
+                        <img src="img/logo.png" alt="Tourism NewZealand logo">
+                    </div>
+                    <div class="copy-right">
+                        <p>Copyright© 2023 STAYSAVVY. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Third slide -->
+            <div class="swiper-slide">
+                <!-- nav -->
+                <nav class="nav-section">
+                    <div class="nav-container">
+                        <h3 class="logo">STAYSAVVY</h3>
+                        <div class="menu-and-darkmodebtn">
+                            <i class="bi bi-list list-icon nav-menu-btn"></i>
+                            <i class="bi bi-moon-fill moon-icon day-to-night-mode-btn"></i>
+                            <i class="bi bi-moon-stars-fill night-to-day-mode-btn"></i>
+                        </div>
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                </nav>
+
+                <div id="place-info-box"></div>
+                <div id="cost-calculate-box">
+                    <div id="description-and-transport-cost">
+                        <div id="place-description">
+                            <p class="category-title">About this place....</p>
+                            <p id="read-btn">Read</p>
+                            <div id="modal-readmore">
+                                <div id="close-modal-readmore"><i class="bi bi-x"></i></div>
+                                <div id="modal-description"></div>
+                            </div>
+                        </div>
+                        <p class="category-title">Estimate transport costs</p>
+
+                        <div id="map-distance">
+                            <button id="see-on-map">See on map</button>
+                        </div>
+                        <div id="modal-map-distance">
+                            <h5>Choose your starting place...</h5>
+                            <div id="modal-map-close-btn"><i class="bi bi-x-circle-fill"></i></div>
+                            <div id="route-cost"></div>
+
+                            <div id="mapbox"></div>
+                        </div>
+
+                        <div class="transport">
+                            <p>Transport costs(return) :</p>
+                            <p id="transport-cost-value"></p>
+                        </div>
+                        <div class="estimate-total-budget">
+                            <p>Estimated budget :</p>
+                            <p id="total-budget"></p>
+                        </div>
+                        <div id="back-to-the-previous-btn">
+                            <i class="bi bi-arrow-left"></i>
+                            <span> Back</span>
+                        </div>
+                        <div id="home">
+                            <i class="bi bi-house-door-fill"></i>
+                            <span> Home</span>
+                        </div>
+                    </div>
+
+                    <div id="meal-option-and-display-cost">
+                        <p class="category-title">Add Extra</p>
+                        <div id="meal-option-wrapper">
+                            <div id="meal-option-btn">
+                                <p>Meal Option <i class="bi bi-chevron-down"></i></p>
+                            </div>
+                            <div id="meal-option-lists">
+                                <div class="breakfast"><i class="bi bi-cup"></i><span>Breakfast($30
+                                        per
+                                        person)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="cost-display-box">
+                            <p>Now your charge</p>
+                            <div class="night-and-cost">
+                                <p id="night"></p>
+                                <p id="accommodation-cost"></p>
+                            </div>
+                            <div class="extra">
+                                <p>Add Extra</p>
+                                <div class="meal-cost-wrapper">
+                                    <p>Meal option</p>
+                                    <p id="meal-cost"></p>
+                                </div>
+                            </div>
+                            <div class="total">
+                                <h3>Total</h3>
+                                <div id="total-cost"></div>
+                            </div>
+                        </div>
+                        <div id="reserve-btn">RESERVE</div>
+                    </div>
+                </div>
+                <!-- footer -->
+                <div class="footer">
+                    <h1>STAYSAVVY</h1>
+                    <ul>
+                        <li>Home</li>
+                        <li>About</li>
+                        <li>Contact</li>
+                        <li>Explore New Zealand</li>
+                    </ul>
+                    <div class="social-media-box">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-twitter"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-youtube"></i>
+                        <i class="bi bi-linkedin"></i>
+                    </div>
+                    <div class="logo-box">
+                        <p>powered by</p>
+                        <img src="img/logo.png" alt="Tourism NewZealand logo">
+                    </div>
+                    <div class="copy-right">
+                        <p>Copyright© 2023 STAYSAVVY. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirm Reservation slide -->
+            <div class="swiper-slide">
+                <!-- nav -->
+                <nav class="nav-section">
+                    <div class="nav-container">
+                        <h3 class="logo">STAYSAVVY</h3>
+                        <div class="menu-and-darkmodebtn">
+                            <i class="bi bi-list list-icon nav-menu-btn"></i>
+                            <i class="bi bi-moon-fill moon-icon day-to-night-mode-btn"></i>
+                            <i class="bi bi-moon-stars-fill night-to-day-mode-btn"></i>
+                        </div>
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                </nav>
+
+                <div id="reserve-message-box">
+                    <i class="bi bi-check-circle"></i>
+                    <h2>Your reservation was successfully created!</h2>
+                    <p>We will contact you shortly to confirm your booking<br>
+                        Have a wonderful holiday !</p>
+                </div>
+                <!-- Reservation info will be display in this box -->
+                <div id="result-box"></div>
+
+                <button id="go-home-btn">
+                    <i class="bi bi-house-door"></i>
+                    <span>Go home</span>
+                </button>
+                <!-- footer -->
+                <div class="footer">
+                    <h1>STAYSAVVY</h1>
+                    <ul>
+                        <li>Home</li>
+                        <li>About</li>
+                        <li>Contact</li>
+                        <li>Explore New Zealand</li>
+                    </ul>
+                    <div class="social-media-box">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-twitter"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-youtube"></i>
+                        <i class="bi bi-linkedin"></i>
+                    </div>
+                    <div class="logo-box">
+                        <p>powered by</p>
+                        <img src="img/logo.png" alt="Tourism NewZealand logo">
+                    </div>
+                    <div class="copy-right">
+                        <p>Copyright© 2023 STAYSAVVY. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- datepicker js -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- Aos -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <!-- Mapbox -->
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.css"
+        type="text/css">
+    <!-- attach javascript -->
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
