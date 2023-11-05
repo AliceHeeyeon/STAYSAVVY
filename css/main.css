@@ -222,8 +222,9 @@ body {
 #hero-and-searchbox #search-input-list .search-condition input {
   border: none;
   font-size: 14px;
-  width: 70px;
+  width: 80px;
   color: #1B605F;
+  background: none;
 }
 #hero-and-searchbox #search-input-list .search-condition input::-moz-placeholder {
   color: #1B605F;

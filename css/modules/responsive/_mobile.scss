@@ -279,8 +279,9 @@ body {
             input {
                 border: none;
                 font-size: 14px;
-                width: 70px;
+                width: 80px;
                 color: $primary-green;
+                background: none;
             }
 
             input::placeholder {
