@@ -139,6 +139,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+  cursor: pointer;
 }
 .nav-container i {
   font-size: 23px;

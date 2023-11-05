@@ -3,6 +3,7 @@ const SwiperWrapper = document.querySelector(".swiper-wrapper");
 // nav bar
 const dayToNightModeBtn = document.querySelectorAll(".day-to-night-mode-btn");
 const nightToDayModeBtn = document.querySelectorAll(".night-to-day-mode-btn");
+const logo = document.querySelectorAll('.logo');
 // Main Search erea//
 const locationBtn = document.getElementById("location");
 const checkInInput = document.getElementById('check-in');
@@ -187,8 +188,17 @@ function toggleDayMode() {
     }
 }
 
+function logoClick() {
+    for (let i = 0; i < logo.length; i++) {
+        logo[i].addEventListener("click", function () { 
+            goHome()
+        })
+    }
+}
+
 toggleDayMode();
 toggleDarkMode();
+logoClick();
 
 //Main search function
 //Get a chosen location value
