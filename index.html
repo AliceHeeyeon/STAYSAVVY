@@ -15,12 +15,12 @@
     <!-- datepicker css library -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Document</title>
+    <title>STAYSAVVY</title>
 </head>
 
 <body>
     <!-- Swiper -->
-    <div class="swiper mySwiper">
+    <div id= "mySwiper" class="swiper mySwiper">
         <div class="swiper-wrapper">
             <!-- first slide -->
             <div class="swiper-slide">
@@ -121,9 +121,15 @@
                     </div>
                 </form>
                 <div id="status-update"></div>
-                <i id="left-btn" class="bi bi-chevron-compact-left chevron-box"></i>
-                <i id="right-btn" class="bi bi-chevron-compact-right chevron-box"></i>
-                <div id="recommend-contents-box"></div>
+               
+                <swiper-container 
+                id="recommend-contents-box"
+                class="mySwiper" 
+                navigation="true"
+                space-between="30"
+                slides-per-view="3"
+                >
+                </swiper-container>
 
                 <!-- Newsletter -->
                 <div id="newsletter-box">
@@ -211,12 +217,21 @@
                             <div class="sorting-option" data-value="rating">Rating</div>
                         </div>
                     </div>
-                    <div class="list-view-arrow">
+                    <!-- <div class="list-view-arrow">
                         <i id="view-previous" class="bi bi-arrow-left-circle-fill"></i>
                         <i id="view-next" class="bi bi-arrow-right-circle-fill"></i>
-                    </div>
+                    </div> -->
                 </div>
-                <div id="filtered-result-box"></div>
+
+                <swiper-container 
+                id="filtered-result-box"
+                class="mySwiper" 
+                navigation="true"
+                space-between="30"
+                slides-per-view="3"
+                >
+                </swiper-container>
+
                 <div id="back-to-the-main-btn">
                     <i class="bi bi-arrow-left"></i>
                     <span> Back</span>
@@ -297,13 +312,15 @@
                             <p>Estimated budget :</p>
                             <p id="total-budget"></p>
                         </div>
-                        <div id="back-to-the-previous-btn">
-                            <i class="bi bi-arrow-left"></i>
-                            <span> Back</span>
-                        </div>
-                        <div id="home">
-                            <i class="bi bi-house-door-fill"></i>
-                            <span> Home</span>
+                        <div class="back-button-container">
+                            <div id="back-to-the-previous-btn">
+                                <i class="bi bi-arrow-left"></i>
+                                <span> Back</span>
+                            </div>
+                            <div id="home">
+                                <i class="bi bi-house-door-fill"></i>
+                                <span> Home</span>
+                            </div>
                         </div>
                     </div>
 
@@ -429,6 +446,7 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <!-- Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
     <!-- Mapbox -->
     <script
         src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>

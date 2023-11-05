@@ -79,21 +79,36 @@ let differenceInDays = "";
 let accommodationIndex = "";
 let onewayTransportCost = "";
 let addExtra = 0;
-// Create variable to display certain number of contents each time
-let currentBoxIndex = 0;
-const boxesPerPage = 3;
 
 // Validation checker
 let validationPassed = false;
 
 // Swiper
-let swiper = new Swiper(".mySwiper", {
+let swiper = new Swiper("#mySwiper", {
     allowTouchMove: false,
     effect: 'fade',
     fadeEffect: {
         crossFade: true
     }
 });
+
+
+function updateSwiperSlidesPerView() {
+    let screenWidth = window.innerWidth;
+    if (screenWidth < 768) {
+        recommendContentsBox.setAttribute('slides-per-view', 1)
+        filteredResultBox.setAttribute('slides-per-view', 1)
+    } else if (screenWidth >= 768 && screenWidth < 992) {
+        recommendContentsBox.setAttribute('slides-per-view', 2)
+        filteredResultBox.setAttribute('slides-per-view', 2)
+    } else {
+        recommendContentsBox.setAttribute('slides-per-view', 3)
+        filteredResultBox.setAttribute('slides-per-view', 3)
+    }
+}
+
+updateSwiperSlidesPerView();
+window.addEventListener('resize', updateSwiperSlidesPerView);
 
 // Initialize datepicker
 flatpickr("#check-in", {
@@ -134,6 +149,14 @@ const mapbox = new mapboxgl.Map({
 let nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'top-right');
 mapbox.addControl(nav, 'top-right');
+
+// scroll to top
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
 
 //toggle Darkmode(Day/Night)
 function toggleDarkMode() {
@@ -276,39 +299,30 @@ function findAccommodation() {
 // Display filtered result in second slide
 function DisplayFilteredResults(result) {
     filteredResultBox.innerHTML += `
-    <div class="display-contents display-filtered-result">
-    <img src="${result.image.mainImage}" alt="${result.title}}">
-    <h5>${result.title} in ${result.location}</h5>
-    <div class="contents-box">
-    <p class="article-contents"><i class="bi bi-star-fill"></i>${result.rating}</p>
-    <p class="article-contents bed">${result.bed}</p>
-    <p class="article-contents">${result.feature}</p>
-    </div>
-    <div class="article-price-and-viewbtn">
-    <div class="price-and-tax">
-    <p class="price"><span>$${result.price}</span>/Night</p>
-    <p class="tax-explain">Including taxes and fees</p>
-    </div>
-    <button data-id="${result.id}" class="view-rooms">View Rooms</button>
-    </div>
-    </div>
+    <swiper-slide>
+        <div class="display-contents display-filtered-result">
+            <img src="${result.image.mainImage}" alt="${result.title}}">
+            <h5>${result.title} in ${result.location}</h5>
+            <div class="contents-box">
+                <p class="article-contents"><i class="bi bi-star-fill"></i>${result.rating}</p>
+                <p class="article-contents bed">${result.bed}</p>
+                <p class="article-contents">${result.feature}</p>
+            </div>
+            <div class="article-price-and-viewbtn">
+                <div class="price-and-tax">
+                    <p class="price"><span>$${result.price}</span>/Night</p>
+                    <p class="tax-explain">Including taxes and fees</p>
+                </div>
+                <button data-id="${result.id}" class="view-rooms">View Rooms</button>
+            </div>
+        </div>
+    </swiper-slide>
     `;
-    showCertainNumberOfBox(currentBoxIndex, currentBoxIndex + 2);
+    updateSwiperSlidesPerView();
     addButtonEvent();
 }
 
-// Show only certain boxes and hide everything else
-function showCertainNumberOfBox(startIndex, endIndex) {
-    const boxes = document.querySelectorAll(".display-filtered-result");
-    const totalBoxes = boxes.length;
-    for (let i = 0; i < totalBoxes; i++) {
-        if (i >= startIndex && i <= endIndex) {
-            boxes[i].style.display = 'block';
-        } else {
-            boxes[i].style.display = 'none';
-        }
-    }
-}
+
 
 // Selectable menu will be shown when click location/guest buttons
 locationBtn.addEventListener("click", function () {
@@ -338,67 +352,28 @@ function displayAccommodation() {
     for (let i = 0; i < filteredResults.length; i++) {
         const place = filteredResults[i];
         recommendContentsBox.innerHTML += `
-    <div class="display-contents">
-    <img src="${place.image.mainImage}" alt="${place.title}}">
-    <h5>${place.title} in ${place.location}</h5>
-    <div class="contents-box">
-    <p class="article-contents"><i class="bi bi-star-fill"></i>${place.rating}</p>
-    <p class="article-contents bed">${place.bed}</p>
-    <p class="article-contents">${place.feature}</p>
-    </div>
-    <div class="article-price-and-viewbtn">
-    <div class="price-and-tax">
-    <p class="price"><span>$${place.price}</span>/Night</p>
-    <p class="tax-explain">Including taxes and fees</p>
-    </div>
-    <button data-id="${place.id}" class="view-rooms">View Rooms</button>
-    </div>
-    </div>
-    `;
-        showBoxes(currentBoxIndex, currentBoxIndex + 2);
-        addButtonEvent();
+        <swiper-slide>
+            <div class="display-contents">
+            <img src="${place.image.mainImage}" alt="${place.title}}">
+            <h5>${place.title} in ${place.location}</h5>
+            <div class="contents-box">
+            <p class="article-contents"><i class="bi bi-star-fill"></i>${place.rating}</p>
+            <p class="article-contents bed">${place.bed}</p>
+            <p class="article-contents">${place.feature}</p>
+            </div>
+            <div class="article-price-and-viewbtn">
+            <div class="price-and-tax">
+            <p class="price"><span>$${place.price}</span>/Night</p>
+            <p class="tax-explain">Including taxes and fees</p>
+            </div>
+            <button data-id="${place.id}" class="view-rooms">View Rooms</button>
+            </div>
+            </div>
+        </swiper-slide>
+            `;
+
     }
 }
-
-
-//Show only certain boxes and hide everything else
-function showBoxes(startIndex, endIndex) {
-    const boxes = document.querySelectorAll(".display-contents");
-    const totalBoxes = boxes.length;
-    for (let i = 0; i < totalBoxes; i++) {
-        if (i >= startIndex && i <= endIndex) {
-            boxes[i].style.display = 'block';
-        } else {
-            boxes[i].style.display = 'none';
-        }
-    }
-}
-
-//Next, Previous places will be shown when click the buttons
-function showNextBox() {
-    currentBoxIndex += boxesPerPage;
-
-    if (currentBoxIndex >= filteredResults.length) {
-        alert("You've reached the end of our recommendations. Feel free to explore more options by conducting your own search!");
-        return;
-    }
-
-    showBoxes(currentBoxIndex, currentBoxIndex + boxesPerPage - 1);
-}
-
-function showPreviousBox() {
-    currentBoxIndex -= boxesPerPage;
-
-    if (currentBoxIndex < 0) {
-        alert("Oops! There are no previous accommodations");
-        return;
-    }
-
-    showBoxes(currentBoxIndex, currentBoxIndex + boxesPerPage - 1);
-}
-
-leftBtn.addEventListener("click", showPreviousBox);
-rightBtn.addEventListener("click", showNextBox);
 
 //Get a view room buttons of specific accommodation
 function addButtonEvent() {
@@ -445,8 +420,10 @@ function openPlaceInfo(placeId) {
         </div>
         <div class="price-review-rating">
             <h2>$${place.price + "NZD "}<span>/ Night</span></h2>
+            <div>
             <p>Reviews</p>
             <span id="rating-star"><i class="bi bi-star-fill"></i>${" " + place.rating}</span>
+            </div>
         </div>
     </div>
 `;
@@ -468,6 +445,7 @@ function searchAccommodations(e) {
 
 function renderAccommodation(place) {
     recommendContentsBox.innerHTML += `
+    <swiper-slide>
     <div class="display-contents">
         <img src="${place.image.mainImage}" alt="${place.title}}">
         <h5>${place.title} in ${place.location}</h5>
@@ -484,8 +462,9 @@ function renderAccommodation(place) {
             <button data-id="${place.id}" class="view-rooms">View Rooms</button>
         </div>
     </div>
+    </swiper-slide>
     `;
-    showBoxes(currentBoxIndex, currentBoxIndex + 2);
+    updateSwiperSlidesPerView();
     addButtonEvent();
 }
 
@@ -514,6 +493,7 @@ function findMatch(string) {
 searchIcon.addEventListener("click", function () {
     searchModal.classList.toggle("active");
     alertNoString.innerHTML = "";
+    scrollToTop()
 });
 
 // string search event will occur when click this button
@@ -565,6 +545,7 @@ function filterBySelectedOption(option) {
     }
     statusUpdate.innerHTML = `Filtered by: ${option}, ${filteredResults.length} results`;
     statusUpdate.classList.add("active");
+    
 }
 
 
@@ -660,28 +641,6 @@ listViewBtn.addEventListener("click", function () {
 
 sortBy.addEventListener("mouseleave", function () {
     sortBy.classList.remove("active");
-});
-
-viewPrevious.addEventListener("click", function () {
-    currentBoxIndex -= boxesPerPage;
-
-    if (currentBoxIndex < 0) {
-        alert("No previous place");
-        return;
-    }
-
-    showCertainNumberOfBox(currentBoxIndex, currentBoxIndex + boxesPerPage - 1);
-});
-
-viewNext.addEventListener("click", function () {
-    currentBoxIndex += boxesPerPage;
-
-    if (currentBoxIndex >= filteredResults.length) {
-        alert("No More places");
-        return;
-    }
-
-    showCertainNumberOfBox(currentBoxIndex, currentBoxIndex + boxesPerPage - 1);
 });
 
 //customize mapbox
@@ -823,6 +782,7 @@ function calculateTotalcost() {
 seeOnMap.addEventListener("click", function () {
     modalMapDistance.classList.add("active");
     addMarkers();
+    scrollToTop();
 });
 
 //Close modal
@@ -962,11 +922,13 @@ reserveBtn.addEventListener("click", function () {
     </div>
     `;
     swiper.slideTo(3);
+    scrollToTop();
 });
 
 // going to previous stage
 backToThePreviousBtn.addEventListener("click", function () {
     swiper.slideTo(1);
+    scrollToTop();
 });
 
 // Start again. this button reset everyting
@@ -993,6 +955,7 @@ function goHome() {
     <i class="bi bi-people"></i>Guest
     `;
     swiper.slideTo(0);
+    scrollToTop();
 }
 
 home.addEventListener("click", function () {
@@ -1415,7 +1378,3 @@ const LocationOfPlace = [
         icon: 'location-icon'
     }
 ];
-
-
-
-

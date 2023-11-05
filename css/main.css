@@ -26,7 +26,8 @@ body {
 
 .swiper {
   width: 100%;
-  height: 100%;
+  height: -moz-min-content;
+  height: min-content;
 }
 
 .swiper-wrapper {
@@ -103,9 +104,6 @@ body {
 .swiper-wrapper.night-mode #cost-calculate-box #description-and-transport-cost #place-description #modal-readmore {
   color: #1B605F;
 }
-.swiper-wrapper.night-mode #cost-calculate-box #meal-option-and-display-cost {
-  margin-left: 18px;
-}
 .swiper-wrapper.night-mode #cost-calculate-box #meal-option-and-display-cost #meal-option-wrapper #meal-option-btn {
   border: 1px solid #E6ECE3;
 }
@@ -128,22 +126,35 @@ body {
 .nav-container {
   display: flex;
   justify-content: space-between;
+  position: relative;
   border-bottom: 1px solid #1B605F;
   padding-bottom: 20px;
-  margin: 30px 90px;
+  margin: 25px 30px;
   transition: ease 1s all;
 }
 .nav-container h3 {
-  font-size: 30px;
+  font-size: 23px;
   font-weight: 900;
   display: flex;
   align-items: center;
-}
-.nav-container .list-icon {
-  margin-right: 20px;
+  justify-content: center;
+  width: 100%;
 }
 .nav-container i {
-  font-size: 35px;
+  font-size: 23px;
+}
+.nav-container .list-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.nav-container .bi-moon-fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.nav-container .bi-person-circle {
+  display: none;
 }
 
 .day-to-night-mode-btn {
@@ -167,16 +178,16 @@ body {
 
 #hero-and-searchbox {
   background-color: rgba(27, 96, 95, 0.4941176471);
-  margin: 30px 90px;
+  margin: 25px 30px;
   border-radius: 20px;
-  box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.25);
-  padding: 70px 30px 90px;
+  box-shadow: 20px 30px 34px rgba(0, 0, 0, 0.25);
+  padding: 30px 20px 60px;
   text-align: center;
   letter-spacing: 1px;
 }
 #hero-and-searchbox #heading {
   color: white;
-  font-size: 56px;
+  font-size: 33px;
   font-weight: lighter;
 }
 #hero-and-searchbox #heading .yellow {
@@ -186,28 +197,28 @@ body {
   color: #FDB18B;
 }
 #hero-and-searchbox p {
+  display: none;
   color: white;
   font-size: 35px;
 }
 #hero-and-searchbox #search-input-list {
-  display: flex;
-  margin: 80px 0px;
+  display: grid;
+  margin: 20px 0px 30px;
   justify-content: center;
   align-items: center;
 }
 #hero-and-searchbox #search-input-list .search-condition {
   background-color: white;
   color: #1B605F;
-  padding: 10px 20px;
-  margin: 10px 20px;
+  margin: 10px;
   border-radius: 20px;
   border: 1px solid #1B605F;
   width: 230px;
-  height: 53px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
 }
 #hero-and-searchbox #search-input-list i {
@@ -216,16 +227,23 @@ body {
 #hero-and-searchbox #search-input-list .location-wrapper {
   position: relative;
 }
+#hero-and-searchbox #search-input-list #custom-datepicker {
+  display: grid;
+}
+#hero-and-searchbox #search-input-list #custom-datepicker input {
+  display: none;
+}
 #hero-and-searchbox #search-input-list #location-lists {
   position: absolute;
   visibility: hidden;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid #1B605F;
-  left: 21px;
-  top: 62px;
+  left: 10px;
+  top: 50px;
   font-size: 20px;
   width: 230px;
+  z-index: 999999;
 }
 #hero-and-searchbox #search-input-list #location-lists.active {
   visibility: visible;
@@ -247,11 +265,12 @@ body {
   color: #1B605F;
 }
 #hero-and-searchbox #search-btn {
-  padding: 10px 66px;
   background-color: #E1754F;
+  width: 230px;
+  height: 45px;
   color: white;
   border: none;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: 3px;
   border-radius: 30px;
@@ -279,8 +298,8 @@ body {
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid #1B605F;
-  left: 21px;
-  top: 63px;
+  left: 10px;
+  top: 50px;
   font-size: 20px;
   width: 230px;
 }
@@ -325,13 +344,12 @@ body {
 }
 
 #recommend-section {
-  display: flex;
-  margin: 70px 90px 0px;
-  justify-content: space-between;
+  margin: 70px 40px 0px;
 }
 #recommend-section #search-and-flter-btn {
   display: flex;
-  font-size: 17px;
+  font-size: 16px;
+  margin-top: 15px;
 }
 #recommend-section #search-and-flter-btn #search-box {
   display: flex;
@@ -366,7 +384,7 @@ body {
   display: none;
 }
 #recommend-section h2 {
-  font-size: 29px;
+  font-size: 22px;
 }
 #recommend-section .filter-wrapper {
   position: relative;
@@ -389,12 +407,13 @@ body {
 #recommend-section #filter-list {
   position: absolute;
   visibility: hidden;
-  right: 0;
+  right: -40px;
   top: 38px;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid #1B605F;
   width: 133px;
+  z-index: 999;
 }
 #recommend-section #filter-list.active {
   visibility: visible;
@@ -435,31 +454,32 @@ body {
 }
 #search-modal #close-search-modal-btn {
   position: absolute;
-  font-size: 30px;
+  font-size: 23px;
   top: 7px;
   right: 10px;
   cursor: pointer;
 }
 #search-modal h1 {
   position: absolute;
-  top: 255px;
-  left: 180px;
-  font-size: 90px;
+  top: 200px;
+  left: 40px;
+  font-size: 45px;
   font-family: "Assistant", sans-serif;
 }
 #search-modal .modal-contents-wrapper {
   position: absolute;
-  top: 425px;
-  left: 175px;
+  top: 300px;
+  left: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 82vw;
 }
 #search-modal .modal-contents-wrapper #search-input {
   display: flex;
   width: 500px;
   height: 50px;
-  font-size: 25px;
+  font-size: 20px;
   padding-left: 10px;
   align-items: center;
   justify-content: center;
@@ -470,7 +490,7 @@ body {
   cursor: text;
 }
 #search-modal .modal-contents-wrapper #string-search-btn {
-  font-size: 40px;
+  font-size: 33px;
   border: none;
   background: none;
   cursor: pointer;
@@ -483,39 +503,37 @@ body {
 }
 
 #status-update {
-  font-size: 20px;
+  font-size: 16px;
   height: 45px;
   padding-bottom: 10px;
   display: flex;
   justify-content: left;
   align-items: center;
-  margin: 5px 90px;
+  margin: 0px 40px;
 }
 
 .chevron-box {
   position: absolute;
 }
 
-#left-btn {
+.contents-box-wrapper {
+  position: relative;
+}
+.contents-box-wrapper #left-btn {
   font-size: 50px;
-  bottom: 760px;
-  left: 30px;
+  bottom: 170px;
+  left: 5px;
   cursor: pointer;
 }
-
-#right-btn {
+.contents-box-wrapper #right-btn {
   font-size: 50px;
-  bottom: 760px;
-  right: 30px;
+  bottom: 170px;
+  right: 5px;
   cursor: pointer;
 }
 
 #recommend-contents-box {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  width: 100%;
-  padding: 0px 90px 80px;
+  margin-bottom: 50px;
 }
 
 .display-contents {
@@ -583,42 +601,45 @@ body {
 #newsletter-box {
   background-color: rgba(34, 111, 109, 0.78);
   text-align: center;
-  padding: 40px 0px;
+  padding: 40px;
+  position: relative;
 }
 #newsletter-box h2 {
   color: white;
-  font-size: 31px;
+  font-size: 22px;
+  text-align: left;
 }
 #newsletter-box h2 span {
   color: #EECD56;
 }
 #newsletter-box #email-validation {
-  font-size: 20px;
+  font-size: 18px;
   color: #ff7848;
   position: absolute;
-  left: 585px;
+  left: 40px;
 }
 #newsletter-box #email-and-button {
   margin-top: 25px;
+  display: flex;
 }
 #newsletter-box #email-and-button #email-input {
   border: none;
   border-bottom: 1px solid white;
   background: none;
   color: rgba(210, 231, 230, 0.49);
-  width: 310px;
   margin-right: 10px;
+  width: 100%;
   padding: 6px 0px;
-  font-size: 20px;
+  font-size: 16px;
 }
 #newsletter-box #email-and-button #email-input.active {
   color: white;
 }
 #newsletter-box #email-and-button #subscribe-btn {
   border: none;
-  padding: 6px 22px;
+  padding: 6px 15px;
   background-color: #EECD56;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   color: #1B605F;
   border-radius: 15px;
@@ -632,7 +653,7 @@ body {
 }
 .footer h1 {
   font-weight: lighter;
-  font-size: 30px;
+  font-size: 20px;
 }
 .footer ul {
   display: flex;
@@ -643,22 +664,26 @@ body {
   list-style: none;
   padding: 0px 10px;
   font-weight: 300;
-  font-size: 19px;
+  font-size: 14px;
 }
 .footer .social-media-box {
-  font-size: 32px;
+  font-size: 24px;
 }
 .footer .social-media-box i {
   padding: 0px 9px;
 }
 .footer .logo-box {
   padding: 40px 0px 10px;
-  width: 140px;
+  width: 100px;
   text-align: left;
   margin: auto;
+  font-size: 12px;
 }
 .footer .logo-box img {
-  width: 140px;
+  width: 100px;
+}
+.footer .copy-right {
+  font-size: 12px;
 }
 
 #chosen-value {
@@ -667,9 +692,9 @@ body {
   background-color: rgba(27, 96, 95, 0.17);
   text-align: center;
   width: 100%;
-  padding: 25px 90px 30px;
-  font-size: 25px;
-  margin-top: 58px;
+  padding: 0px 30px;
+  font-size: 16px;
+  margin-top: 30px;
 }
 #chosen-value .section-and-value-wrapper .section {
   padding: 15px 0px;
@@ -677,28 +702,28 @@ body {
 }
 #chosen-value .section-and-value-wrapper .value {
   color: rgb(39, 39, 39);
-  padding: 15px 0px;
+  padding: 0px 0px 15px;
 }
 
 #result-status {
-  font-size: 25px;
+  font-size: 16px;
   font-weight: 600;
-  margin: 35px 90px;
+  margin: 35px 30px;
 }
 
 .list-view-wrapper {
-  margin: 0px 90px 30px;
+  margin: 0px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .list-view-wrapper .view-btn-and-option #list-view-btn {
-  padding: 8px 18px 8px 25px;
+  padding: 5px 10px 8px 15px;
   border: none;
   border-radius: 10px;
   background-color: #1B605F;
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   cursor: pointer;
 }
 .list-view-wrapper .view-btn-and-option #list-view-btn i {
@@ -714,6 +739,7 @@ body {
   padding: 5px 0px;
   font-size: 18px;
   background-color: #E6ECE3;
+  z-index: 9999;
 }
 .list-view-wrapper .view-btn-and-option #sort-by.active {
   visibility: visible;
@@ -737,18 +763,13 @@ body {
 }
 
 #filtered-result-box {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  width: 100%;
-  padding: 0px 90px;
-  margin-bottom: 50px;
+  margin: 30px 0px 50px;
 }
 
 #back-to-the-main-btn {
   display: flex;
-  font-size: 20px;
-  margin: 30px 90px;
+  font-size: 16px;
+  margin: 25px 30px;
   cursor: pointer;
 }
 #back-to-the-main-btn span {
@@ -759,8 +780,7 @@ body {
 }
 
 #map {
-  width: 100%;
-  height: 800px;
+  height: 550px;
 }
 
 .mapboxgl-popup {
@@ -814,10 +834,7 @@ body {
 
 #image-container {
   display: grid;
-  width: 100%;
-  padding: 0px 90px;
-  grid-template-columns: 3fr 1fr;
-  grid-template-areas: "grid-main side1" "grid-main side2" "grid-main side3";
+  padding: 0px 30px;
 }
 #image-container img {
   width: 100%;
@@ -825,70 +842,67 @@ body {
   border-radius: 25px;
 }
 #image-container #grid-main {
-  grid-area: grid-main;
-  height: 699px;
+  height: 270px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-#image-container #side1 {
-  grid-area: side1;
-  height: 230px;
-}
-#image-container #side2 {
-  grid-area: side2;
-  height: 230px;
-}
+#image-container #side1,
+#image-container #side2,
 #image-container #side3 {
-  grid-area: side3;
-  height: 230px;
+  display: none;
 }
 
 #information-wrapper {
-  margin: 20px 90px 0px;
-  display: flex;
-  justify-content: space-between;
+  margin: 10px 30px 0px;
 }
 #information-wrapper .title-location-feature h2 {
-  font-size: 30px;
+  font-size: 23px;
   font-weight: 600;
 }
 #information-wrapper .title-location-feature p {
-  font-size: 22px;
+  font-size: 20px;
   margin: 15px 0px 25px;
 }
 #information-wrapper .title-location-feature span {
   border-radius: 30px;
   background: rgba(27, 96, 95, 0.24);
   padding: 6px 22px;
-  font-size: 20px;
+  font-size: 18px;
+}
+#information-wrapper .price-review-rating {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 #information-wrapper .price-review-rating h2 {
   font-weight: 600;
-  font-size: 30px;
+  font-size: 23px;
 }
 #information-wrapper .price-review-rating h2 span {
-  font-size: 22px;
+  font-size: 20px;
 }
 #information-wrapper .price-review-rating p {
-  margin: 35px 0px 10px;
-  font-size: 22px;
+  margin: 10px 0px;
+  font-size: 20px;
   text-decoration: underline;
   text-align: end;
 }
 #information-wrapper .price-review-rating #rating-star {
-  font-size: 22px;
+  font-size: 20px;
   justify-content: end;
   display: flex;
   justify-content: end;
 }
 
 #cost-calculate-box {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 30px 90px;
+  margin: 25px 30px;
   padding-top: 30px;
   border-top: 1px solid #1B605F;
 }
 #cost-calculate-box .category-title {
-  font-size: 27px;
+  font-size: 23px;
   font-weight: 500;
 }
 #cost-calculate-box #read-btn {
@@ -900,21 +914,20 @@ body {
   align-items: end;
   cursor: context-menu;
 }
-#cost-calculate-box #description-and-transport-cost {
-  margin-right: 18px;
-}
 #cost-calculate-box #description-and-transport-cost #place-description {
   display: flex;
   margin-bottom: 30px;
 }
 #cost-calculate-box #description-and-transport-cost #place-description #modal-readmore {
   position: absolute;
+  z-index: 9999;
   background-color: white;
   border: 3px solid #1B605F;
   border-radius: 10px;
-  width: 650px;
-  height: 460px;
-  padding: 40px;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 40px 20px;
   visibility: hidden;
 }
 #cost-calculate-box #description-and-transport-cost #place-description #modal-readmore.active {
@@ -928,12 +941,12 @@ body {
   cursor: pointer;
 }
 #cost-calculate-box #description-and-transport-cost #place-description #modal-readmore h2 {
-  font-size: 25px;
-  margin-bottom: 25px;
+  font-size: 23px;
+  margin-bottom: 15px;
 }
 #cost-calculate-box #description-and-transport-cost #place-description #modal-readmore p {
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 16px;
+  line-height: 25px;
 }
 #cost-calculate-box #description-and-transport-cost #map-distance {
   margin: 28px 0px;
@@ -942,17 +955,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 400px;
+  height: 250px;
   border: 1px solid #1B605F;
   border-radius: 10px;
 }
 #cost-calculate-box #description-and-transport-cost #map-distance #see-on-map {
-  padding: 13px 25px;
+  padding: 10px 18px;
   background-color: #1B605F;
   color: white;
   border-radius: 10px;
   border: none;
-  font-size: 20px;
+  font-size: 18px;
   cursor: zoom-in;
 }
 #cost-calculate-box #description-and-transport-cost #map-distance #see-on-map:hover {
@@ -971,15 +984,16 @@ body {
           backdrop-filter: blur(5px);
   z-index: 9999;
   color: white;
-  padding: 50px;
+  padding: 50px 30px;
   visibility: hidden;
 }
 #cost-calculate-box #description-and-transport-cost #modal-map-distance.active {
   visibility: visible;
 }
 #cost-calculate-box #description-and-transport-cost #modal-map-distance h5 {
-  font-size: 26px;
+  font-size: 23px;
   font-weight: 600;
+  margin-bottom: 20px;
 }
 #cost-calculate-box #description-and-transport-cost #modal-map-distance p {
   font-size: 20px;
@@ -1003,7 +1017,7 @@ body {
 }
 #cost-calculate-box #description-and-transport-cost #modal-map-distance #mapbox {
   width: 100%;
-  height: 100vh;
+  height: 500px;
   border-radius: 10px;
 }
 #cost-calculate-box #description-and-transport-cost #modal-map-distance #modal-map-close-btn {
@@ -1014,7 +1028,7 @@ body {
 }
 #cost-calculate-box #description-and-transport-cost .transport,
 #cost-calculate-box #description-and-transport-cost .estimate-total-budget {
-  font-size: 22px;
+  font-size: 20px;
   display: flex;
 }
 #cost-calculate-box #description-and-transport-cost .transport p,
@@ -1024,9 +1038,14 @@ body {
 #cost-calculate-box #description-and-transport-cost .estimate-total-budget {
   margin-top: 17px;
 }
+#cost-calculate-box .back-button-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 #cost-calculate-box #back-to-the-previous-btn {
   display: flex;
-  font-size: 22px;
+  font-size: 18px;
   margin-top: 70px;
   width: 100px;
   cursor: pointer;
@@ -1044,7 +1063,7 @@ body {
   width: 88px;
   border-radius: 10px;
   color: white;
-  font-size: 19px;
+  font-size: 18px;
   padding: 4px;
   cursor: pointer;
 }
@@ -1052,7 +1071,7 @@ body {
   background-color: #EECD56;
 }
 #cost-calculate-box #meal-option-and-display-cost {
-  margin-left: 18px;
+  margin-top: 45px;
 }
 #cost-calculate-box #meal-option-and-display-cost #meal-option-wrapper {
   position: relative;
@@ -1091,16 +1110,16 @@ body {
   border-radius: 10px;
   margin: 19px 0px;
   padding: 13px 0px;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
   width: 100%;
   cursor: pointer;
 }
 #cost-calculate-box #meal-option-and-display-cost #cost-display-box {
-  padding: 37px 45px;
+  padding: 20px;
   border: 1px solid #1B605F;
   border-radius: 10px;
-  font-size: 24px;
+  font-size: 20px;
 }
 #cost-calculate-box #meal-option-and-display-cost #cost-display-box .night-and-cost {
   display: flex;
@@ -1124,18 +1143,18 @@ body {
 }
 #cost-calculate-box #meal-option-and-display-cost #cost-display-box .total #total-cost {
   font-weight: 600;
-  font-size: 28px;
+  font-size: 23px;
 }
 #cost-calculate-box #meal-option-and-display-cost #reserve-btn {
-  padding: 15px 0px;
+  padding: 10px 0px;
   text-align: center;
   color: white;
   background-color: #E1754F;
   box-shadow: 8px 8px 10px rgba(27, 96, 95, 0.58);
   border-radius: 10px;
   font-weight: 600;
-  margin: 42px 50px;
-  font-size: 22px;
+  margin: 42px 50px 120px;
+  font-size: 20px;
   cursor: pointer;
   transition: ease 235ms all;
   touch-action: manipulation;
@@ -1151,29 +1170,29 @@ body {
 
 #reserve-message-box {
   text-align: center;
-  margin: 80px 90px;
+  margin: 60px 30px;
 }
 #reserve-message-box i {
-  font-size: 75px;
+  font-size: 50px;
 }
 #reserve-message-box h2 {
-  font-size: 39px;
-  margin: 50px 0px;
+  font-size: 30px;
+  margin: 40px 0px 20px;
 }
 #reserve-message-box p {
-  font-size: 28px;
-  line-height: 50px;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 #result-box {
   border: 1px solid #1B605F;
   border-radius: 10px;
-  margin: 0px 245px 110px;
-  padding: 35px 150px;
+  margin: 0px 30px 60px;
+  padding: 20px;
   text-align: center;
 }
 #result-box h2 {
-  font-size: 30px;
+  font-size: 23px;
 }
 #result-box #reservation-info-container {
   display: flex;
@@ -1182,24 +1201,24 @@ body {
   margin: 30px 0px 10px;
 }
 #result-box #reservation-info-container .reservation-info p {
-  font-size: 25px;
+  font-size: 20px;
   padding-bottom: 5px;
 }
 #result-box #reservation-info-container .reservation-info h5 {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 #go-home-btn {
   display: flex;
   margin: auto;
-  padding: 13px 44px;
+  padding: 10px 25px;
   border: 2px solid #1B605F;
   background-color: #1B605F;
   border-radius: 10px;
   color: white;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   cursor: pointer;
 }
 #go-home-btn span {
@@ -1208,4 +1227,345 @@ body {
 #go-home-btn:hover {
   background: #EECD56;
   color: #1B605F;
+}
+
+@media screen and (min-width: 992px) {
+  .swiper-wrapper {
+    background: #E6ECE3;
+    transition: ease 1s all;
+  }
+  .swiper-wrapper.night-mode {
+    transition: ease 1s all;
+    background: black;
+    color: #E6ECE3;
+  }
+  .swiper-wrapper.night-mode #cost-calculate-box #meal-option-and-display-cost {
+    margin-top: 0px;
+    margin-left: 18px;
+  }
+  .nav-container {
+    margin: 30px 90px;
+  }
+  .nav-container h3 {
+    font-size: 30px;
+  }
+  .nav-container i {
+    font-size: 35px;
+  }
+  .nav-container .bi-moon-fill {
+    position: static;
+  }
+  #hero-and-searchbox {
+    margin: 30px 90px;
+    padding: 70px 30px 90px;
+  }
+  #hero-and-searchbox #heading {
+    font-size: 56px;
+  }
+  #hero-and-searchbox #heading .yellow {
+    display: inline;
+  }
+  #hero-and-searchbox p {
+    display: block;
+  }
+  #hero-and-searchbox #search-input-list {
+    display: flex;
+    margin: 80px 0px;
+    justify-content: center;
+    align-items: center;
+  }
+  #hero-and-searchbox #search-input-list .search-condition {
+    padding: 10px 20px;
+    margin: 10px 20px;
+    height: 53px;
+    font-size: 20px;
+  }
+  #hero-and-searchbox #search-input-list #location-lists {
+    left: 21px;
+    top: 62px;
+  }
+  #hero-and-searchbox #search-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 230px;
+    height: 53px;
+    font-size: 25px;
+  }
+  #hero-and-searchbox .guest-wrapper #number-lists {
+    left: 21px;
+    top: 63px;
+  }
+  #hero-and-searchbox #custom-datepicker {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #recommend-section {
+    display: flex;
+    margin: 70px 90px 0px;
+    justify-content: space-between;
+  }
+  #recommend-section #search-and-flter-btn {
+    font-size: 17px;
+  }
+  #recommend-section h2 {
+    font-size: 29px;
+  }
+  #recommend-section #filter-list {
+    right: 0;
+  }
+  #search-modal #close-search-modal-btn {
+    font-size: 30px;
+  }
+  #search-modal h1 {
+    top: 255px;
+    left: 180px;
+    font-size: 90px;
+  }
+  #search-modal .modal-contents-wrapper {
+    top: 425px;
+    left: 175px;
+    justify-content: start;
+  }
+  #search-modal .modal-contents-wrapper #search-input {
+    font-size: 25px;
+  }
+  #search-modal .modal-contents-wrapper #string-search-btn {
+    font-size: 40px;
+  }
+  #status-update {
+    font-size: 20px;
+    margin: 5px 90px;
+  }
+  .contents-box-wrapper #left-btn {
+    bottom: 760px;
+    left: 30px;
+  }
+  .contents-box-wrapper #right-btn {
+    bottom: 760px;
+    right: 30px;
+  }
+  #recommend-contents-box {
+    margin-bottom: 80px;
+  }
+  #newsletter-box {
+    display: grid;
+    justify-content: center;
+    padding: 40px 0px;
+  }
+  #newsletter-box h2 {
+    font-size: 31px;
+  }
+  #newsletter-box #email-validation {
+    font-size: 20px;
+    left: 585px;
+  }
+  #newsletter-box #email-and-button #email-input {
+    font-size: 20px;
+  }
+  #newsletter-box #email-and-button #subscribe-btn {
+    padding: 6px 22px;
+    font-size: 20px;
+  }
+  .footer ul li {
+    font-size: 19px;
+  }
+  .footer .social-media-box {
+    font-size: 32px;
+  }
+  .footer .logo-box {
+    width: 140px;
+  }
+  .footer .logo-box img {
+    width: 140px;
+  }
+  .footer .copy-right {
+    font-size: 14px;
+  }
+  #chosen-value {
+    padding: 25px 90px 30px;
+    font-size: 25px;
+    margin-top: 58px;
+  }
+  #chosen-value .section-and-value-wrapper .value {
+    padding: 15px 0px;
+  }
+  #result-status {
+    font-size: 25px;
+    margin: 35px 90px;
+  }
+  .list-view-wrapper {
+    margin: 0px 90px 30px;
+  }
+  .list-view-wrapper .view-btn-and-option #list-view-btn {
+    padding: 8px 18px 8px 25px;
+    font-size: 20px;
+  }
+  #filtered-result-box {
+    margin: 30px 90px 50px;
+  }
+  #back-to-the-main-btn {
+    font-size: 20px;
+    margin: 30px 90px;
+  }
+  #map {
+    height: 600px;
+  }
+  #image-container {
+    width: 100%;
+    padding: 0px 90px;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "grid-main side1" "grid-main side2" "grid-main side3";
+  }
+  #image-container #grid-main {
+    grid-area: grid-main;
+    height: 699px;
+  }
+  #image-container #side1 {
+    display: block;
+    grid-area: side1;
+    height: 230px;
+  }
+  #image-container #side2 {
+    display: block;
+    grid-area: side2;
+    height: 230px;
+  }
+  #image-container #side3 {
+    display: block;
+    grid-area: side3;
+    height: 230px;
+  }
+  #information-wrapper {
+    margin: 20px 90px 0px;
+    display: flex;
+    justify-content: space-between;
+  }
+  #information-wrapper .title-location-feature h2 {
+    font-size: 30px;
+  }
+  #information-wrapper .title-location-feature p {
+    font-size: 22px;
+  }
+  #information-wrapper .title-location-feature span {
+    font-size: 20px;
+  }
+  #information-wrapper .price-review-rating h2 {
+    font-size: 30px;
+  }
+  #information-wrapper .price-review-rating h2 span {
+    font-size: 22px;
+  }
+  #information-wrapper .price-review-rating p {
+    margin: 35px 0px 10px;
+    font-size: 22px;
+  }
+  #information-wrapper .price-review-rating #rating-star {
+    font-size: 22px;
+  }
+  #cost-calculate-box {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 30px 90px;
+  }
+  #cost-calculate-box .category-title {
+    font-size: 27px;
+  }
+  #cost-calculate-box #description-and-transport-cost {
+    margin-right: 18px;
+  }
+  #cost-calculate-box #description-and-transport-cost #place-description #modal-readmore {
+    width: 650px;
+    padding: 40px 40px 60px;
+  }
+  #cost-calculate-box #description-and-transport-cost #place-description #modal-readmore h2 {
+    font-size: 25px;
+    margin-bottom: 25px;
+  }
+  #cost-calculate-box #description-and-transport-cost #place-description #modal-readmore p {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  #cost-calculate-box #description-and-transport-cost #map-distance {
+    height: 400px;
+  }
+  #cost-calculate-box #description-and-transport-cost #map-distance #see-on-map {
+    padding: 13px 25px;
+    font-size: 20px;
+  }
+  #cost-calculate-box #description-and-transport-cost #modal-map-distance {
+    padding: 50px;
+  }
+  #cost-calculate-box #description-and-transport-cost #modal-map-distance h5 {
+    font-size: 26px;
+  }
+  #cost-calculate-box #description-and-transport-cost #modal-map-distance #mapbox {
+    height: 100vh;
+  }
+  #cost-calculate-box #description-and-transport-cost .transport,
+  #cost-calculate-box #description-and-transport-cost .estimate-total-budget {
+    font-size: 22px;
+  }
+  #cost-calculate-box .back-button-container {
+    position: static;
+  }
+  #cost-calculate-box #back-to-the-previous-btn {
+    font-size: 22px;
+  }
+  #cost-calculate-box #home {
+    font-size: 19px;
+  }
+  #cost-calculate-box #home:hover {
+    background-color: #EECD56;
+  }
+  #cost-calculate-box #meal-option-and-display-cost {
+    margin-top: 0px;
+    margin-left: 18px;
+  }
+  #cost-calculate-box #meal-option-and-display-cost #meal-option-wrapper #meal-option-btn {
+    font-size: 22px;
+  }
+  #cost-calculate-box #meal-option-and-display-cost #cost-display-box {
+    padding: 37px 45px;
+    font-size: 24px;
+  }
+  #cost-calculate-box #meal-option-and-display-cost #cost-display-box .total #total-cost {
+    font-size: 28px;
+  }
+  #cost-calculate-box #meal-option-and-display-cost #reserve-btn {
+    padding: 15px 0px;
+    margin: 42px 50px;
+    font-size: 22px;
+  }
+  #reserve-message-box {
+    margin: 80px 90px;
+  }
+  #reserve-message-box i {
+    font-size: 75px;
+  }
+  #reserve-message-box h2 {
+    font-size: 39px;
+    margin: 50px 0px;
+  }
+  #reserve-message-box p {
+    font-size: 28px;
+    line-height: 50px;
+  }
+  #result-box {
+    margin: 0px 245px 110px;
+    padding: 35px;
+  }
+  #result-box h2 {
+    font-size: 30px;
+    text-align: center;
+  }
+  #result-box #reservation-info-container .reservation-info p {
+    font-size: 25px;
+  }
+  #result-box #reservation-info-container .reservation-info h5 {
+    font-size: 25px;
+  }
+  #go-home-btn {
+    padding: 13px 44px;
+    font-size: 22px;
+    margin-bottom: 100px;
+  }
 }/*# sourceMappingURL=main.css.map */
