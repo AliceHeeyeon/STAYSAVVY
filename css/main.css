@@ -209,7 +209,6 @@ body {
 }
 #hero-and-searchbox #search-input-list .search-condition {
   background-color: white;
-  color: #1B605F;
   margin: 10px;
   border-radius: 20px;
   border: 1px solid #1B605F;
@@ -218,8 +217,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
   cursor: pointer;
+}
+#hero-and-searchbox #search-input-list .search-condition input {
+  border: none;
+  font-size: 14px;
+  width: 70px;
+  color: #1B605F;
+}
+#hero-and-searchbox #search-input-list .search-condition input::-moz-placeholder {
+  color: #1B605F;
+  font-family: "Assistant", sans-serif;
+  text-align: center;
+}
+#hero-and-searchbox #search-input-list .search-condition input::placeholder {
+  color: #1B605F;
+  font-family: "Assistant", sans-serif;
+  text-align: center;
 }
 #hero-and-searchbox #search-input-list i {
   margin-right: 5px;
@@ -1276,6 +1290,12 @@ body {
     margin: 10px 20px;
     height: 53px;
     font-size: 20px;
+  }
+  #hero-and-searchbox #search-input-list .search-condition input {
+    border: none;
+    font-size: 20px;
+    width: 100px;
+    color: #1B605F;
   }
   #hero-and-searchbox #search-input-list #location-lists {
     left: 21px;
