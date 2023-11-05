@@ -230,9 +230,6 @@ body {
 #hero-and-searchbox #search-input-list #custom-datepicker {
   display: grid;
 }
-#hero-and-searchbox #search-input-list #custom-datepicker input {
-  display: none;
-}
 #hero-and-searchbox #search-input-list #location-lists {
   position: absolute;
   visibility: hidden;
