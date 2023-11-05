@@ -224,7 +224,6 @@ body {
   font-size: 14px;
   width: 80px;
   color: #1B605F;
-  background-color: transparent;
 }
 #hero-and-searchbox #search-input-list .search-condition input::-moz-placeholder {
   color: #1B605F;
