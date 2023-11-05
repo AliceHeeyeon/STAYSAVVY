@@ -388,8 +388,11 @@ function addButtonEvent() {
                     openPlaceInfo(accommodationIndex);
                 }
             }
+            scrollToTop();
         });
     }
+
+   
 }
 
 //Show detail info of the place that user click view button 
